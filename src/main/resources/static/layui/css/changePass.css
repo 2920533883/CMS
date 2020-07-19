@@ -1,0 +1,14 @@
+form{
+    display: block;
+    position: absolute;
+    width: 400px;
+    height: 550px;
+    top: 100px;
+    left: 500px;
+}
+.input{
+    width: 100px;
+}
+.input:focus{
+    outline: 1px solid #333333;
+}

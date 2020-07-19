@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itzhang.mapper.CusMapper">
+    <insert id="insertCus" keyProperty="id" useGeneratedKeys="true">
+        insert into customer values (null, #{name}, #{company},
+        #{position}, #{salary}, #{phone}, #{sex}, #{state}, #{empId}, now())
+    </insert>
+    <update id="updateCus">
+        update customer
+        <set>
+            cust_name = #{name}, company=#{company},position=#{position},salary=#{salary},
+            phone=#{phone}, sex=#{sex}, state=#{state}, emp_id=#{empId}
+        </set>
+        where id = #{id}
+
+    </update>
+    <delete id="deleteCus">
+        delete from customer where id = #{id}
+    </delete>
+
+    <select id="getAllCus" resultType="com.itzhang.bean.Cus">
+        select id, cust_name name, company, position, salary,
+         phone, create_time createTime, sex, state, emp_id empId
+         from customer
+    </select>
+    <select id="searchCuss" resultType="com.itzhang.bean.Cus">
+        select id, cust_name name, company, position, salary,
+         phone, create_time createTime, sex, state, emp_id empId
+         from customer
+         <where>
+             <if test="name != ''">
+                 cust_name = #{name} and
+             </if>
+             <if test="company != ''">
+                 company = #{company} and
+             </if>
+             <if test="sex != ''">
+                 sex = #{sex} and
+             </if>
+             <if test="state != ''">
+                 state = #{state}
+             </if>
+         </where>
+    </select>
+</mapper>

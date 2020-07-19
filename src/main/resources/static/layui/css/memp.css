@@ -1,0 +1,95 @@
+body{
+    z-index: -1;
+}
+#search{
+    margin-left: 100px;
+    margin-top: 15px;
+}
+#search .input{
+    margin-bottom: 10px;
+}
+#search .select{
+    margin-bottom: 10px;
+}
+.input{
+    height: 30px;
+    width: 100px;
+}
+.input:focus{
+    outline: 1px solid #333333;
+}
+.select{
+    width: 70px;
+    height: 30px;
+
+}
+.layui-btn{
+    height: 40px;
+    line-height: 40px;
+    margin: -5px 30px;
+}
+.layui-bg-green{
+    width: 95%;
+    margin: 20px auto;
+}
+
+.td_btn{
+    margin-left: auto;
+    font-size: 12px;
+    color: white;
+    width: 50px;
+    height: 30px;
+    background-color: #1e9fff;
+    border: none;
+}
+.td_btn:hover{
+    transition-duration: 300ms;
+    background-color: #4bb2ff;
+}
+#tr{
+    position: relative;
+}
+td img{
+    position: absolute;
+    width: 25px;
+    right: 10px;
+    top: 50%;
+    margin-top: -20px;
+    border-radius: 40%;
+}
+#myLayer{
+    display: none;
+    position: absolute;
+    width: 400px;
+    height: 550px;
+    top: 100px;
+    left: 50%;
+    margin-left: -200px;
+    background-color: #f2f2f2;
+    z-index: 1000;
+}
+.special{
+    margin-left: -13px;
+}
+.closeBtn{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+#myLayer label {
+    margin-left: 85px;
+    margin-top: 35px;
+    display: block;
+}
+#myLayer #btn{
+    margin-left: 85px;
+    margin-top: 35px;
+    display: block;
+}
+
+
+
+
+
+
+
+

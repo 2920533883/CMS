@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>客户管理</title>
+    <link rel="stylesheet" th:href="@{../../static/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{../../static/layui/css/mcus.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin" id="memp">
+    <div th:replace="~{commons/common::topBar}"></div>
+    <div th:insert="~{commons/common::sideBar}"></div>
+    <div class="layui-body">
+        <form method="get" action="/views/searchCus" id="search">
+            <label class="layui-col-md3">
+                <span>姓名：</span>
+                <input type="text" class="input" name="name" id="search_name">
+            </label>
+            <label class="layui-col-md3">
+                <span>公司：</span>
+                <input type="text" class="input" name="company" id="search_company">
+            </label>
+            <div class="layui-col-md3">
+                <label class="layui-col-md6">
+                    <span>性别：</span>
+                    <select class="select" name="sex">
+                        <option value="0">男</option>
+                        <option value="1">女</option>
+                    </select>
+                </label>
+                <label class="layui-col-md6">
+                    <span>状态：</span>
+                    <select class="select" name="state">
+                        <option value="0">无效</option>
+                        <option value="1">有效</option>
+                    </select>
+                </label>
+            </div>
+            <input type="submit" value="查询" class="layui-btn layui-btn-sm">
+            <input type="button" value="清空" class="layui-btn layui-btn-primary layui-btn-sm" th:onclick="|javascript:searchClear()|">
+            <input type="button" value="添加" class="layui-btn layui-btn-sm" th:onclick="|javascript:insertItem()|" th:if="${session.user.role == 1}">
+        </form>
+        <hr class="layui-bg-green">
+        <div class="show">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>姓名</th>
+                    <th>公司</th>
+                    <th>住址</th>
+                    <th>薪水</th>
+                    <th>电话</th>
+                    <th>性别</th>
+                    <th>状态</th>
+                    <th>业务员</th>
+                    <th>创建时间</th>
+                    <th th:if="${session.user.role == 1}">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cus, userSta:${cuss}" id="tr">
+                    <td th:text="${cus.name}" id="show_name"></td>
+                    <td th:text="${cus.company}" id="show_company"></td>
+                    <td th:text="${cus.position}" id="show_position"></td>
+                    <td th:text="${cus.salary}" id="show_salary"></td>
+                    <td th:text="${cus.phone}" id="show_phone"></td>
+                    <td th:text="${cus.sex}?女:男"></td>
+                    <td th:text="${cus.state}?无效:有效"></td>
+                    <td th:text="${cus.empId}" id="show_empId"></td>
+                    <td th:text="${cus.createTime}"></td>
+                    <td th:if="${session.user.role == 1}">
+                        <div>
+                            <button class="td_btn" id="change" th:onclick="|javascript:changeItem(${cus.id},${userSta.index})|">修改</button>
+                            <button class="td_btn" id="delete" th:onclick="|javascript:delItem(${cus.id})|">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <form id="myLayer">
+        <div th:onclick="|javascript:changeClose()|" class="closeBtn" >
+            <i class="layui-icon">&#x1006;</i>
+        </div>
+        <input type="hidden" name="id" id="change_id">
+        <label>
+            <span>姓名：</span>
+            <input type="text" class="input" name="name" id="change_name">
+        </label>
+        <label>
+            <span>公司：</span>
+            <input type="text" class="input" name="company" id="change_company">
+        </label>
+        <label>
+            <span>住址：</span>
+            <input type="text" class="input" name="position" id="change_position">
+        </label>
+        <label>
+            <span>薪水：</span>
+            <input type="text" class="input" name="salary" id="change_salary">
+        </label>
+        <label>
+            <span>电话：</span>
+            <input type="text" class="input" name="phone" id="change_phone">
+        </label>
+        <label>
+            <span class="special">业务员：</span>
+            <input type="text" class="input" name="empId" id="change_empId">
+        </label>
+        <label>
+            <span>性别：</span>
+            <select class="select" name="sex">
+                <option value="0">男</option>
+                <option value="1">女</option>
+            </select>
+        </label>
+        <label>
+            <span>状态：</span>
+            <select class="select" name="state">
+                <option value="0">有效</option>
+                <option value="1">无效</option>
+            </select>
+        </label>
+        <div id="btn">
+            <input type="submit" value="提交" class="layui-btn" id="change_submit">
+            <input type="button" value="清空" class="layui-btn layui-btn-primary" th:onclick="|javascript:changeClear()|">
+        </div>
+    </form>
+</div>
+<script th:src="@{../../static/layui/layui.js}"></script>
+<script th:src="@{../../static/layui/js/mcus.js}"></script>
+
+</body>
+</html>

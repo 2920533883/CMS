@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>员工管理</title>
+    <link rel="stylesheet" th:href="@{../../static/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{../../static/layui/css/memp.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin" id="memp">
+    <div th:replace="~{commons/common::topBar}"></div>
+    <div th:insert="~{commons/common::sideBar}"></div>
+    <div class="layui-body">
+        <form method="get" action="/views/searchEmp" id="search">
+            <label class="layui-col-md3">
+                用户名：
+                <input type="text" class="input" name="username" id="search_username">
+            </label>
+            <label class="layui-col-md3">
+                姓名：
+                <input type="text" class="input" name="realName" id="search_realName">
+            </label>
+            <div class="layui-col-md3">
+                <label class="layui-col-md6">
+                    角色：
+                    <select class="select" name="role">
+                        <option value="0">业务员</option>
+                        <option value="1">管理者</option>
+                    </select>
+                </label>
+                <label class="layui-col-md6">
+                    状态：
+                    <select class="select" name="state">
+                        <option value="0">离职</option>
+                        <option value="1">在职</option>
+                    </select>
+                </label>
+            </div>
+            <input type="submit" value="查询" class="layui-btn layui-btn-sm">
+            <input type="button" value="清空" class="layui-btn layui-btn-primary layui-btn-sm" th:onclick="|javascript:searchClear()|">
+            <input type="button" value="添加" class="layui-btn layui-btn-sm" th:onclick="|javascript:insertItem()|" th:if="${session.user.role == 1}">
+        </form>
+        <hr class="layui-bg-green">
+        <div class="show">
+            <table class="layui-table">
+                <colgroup>
+                    <col width="150">
+                    <col width="200">
+                    <col>
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>姓名</th>
+                    <th>角色</th>
+                    <th>状态</th>
+                    <th>创建时间</th>
+                    <th th:if="${session.user.role == 1}">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="emp, userSta:${emps}" id="tr">
+                    <td>
+                        <span id="show_username">[[${emp.username}]]</span>
+                        <img th:src="${emp.img}" alt="" id="show_img">
+                    </td>
+                    <td th:text="${emp.password}" id="show_password"></td>
+                    <td th:text="${emp.realName}" id="show_realName"></td>
+                    <td th:text="${emp.role}?管理员:业务员"></td>
+                    <td th:text="${emp.state}?在职:离职"></td>
+                    <td th:text="${emp.createTime}"></td>
+                    <td th:if="${session.user.role == 1}">
+                        <div>
+                            <button class="td_btn" id="change" th:onclick="|javascript:changeItem(${emp.id},${userSta.index})|">修改</button>
+                            <button class="td_btn" id="delete" th:onclick="|javascript:delItem(${emp.id})|">删除</button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <form id="myLayer">
+        <div th:onclick="|javascript:changeClose()|" class="closeBtn" >
+            <i class="layui-icon">&#x1006;</i>
+        </div>
+        <input type="hidden" name="id" id="change_id">
+        <label>
+            <span class="special">用户名</span>：
+            <input type="text" class="input" name="username" id="change_username">
+        </label>
+        <label>
+            <span>密码：</span>
+            <input type="text" class="input" name="password" id="change_password">
+        </label>
+        <label>
+            <span>姓名：</span>
+            <input type="text" class="input" name="realName" id="change_realName">
+        </label>
+        <label>
+            <span>头像：</span>
+            <input type="text" class="input" name="img" id="change_img">
+        </label>
+        <label>
+            <span>角色：</span>
+            <select class="select" name="role">
+                <option value="0">业务员</option>
+                <option value="1">管理员</option>
+            </select>
+        </label>
+        <label>
+            <span>状态：</span>
+            <select class="select" name="state">
+                <option value="0">离职</option>
+                <option value="1">在职</option>
+            </select>
+        </label>
+        <div id="btn">
+            <input type="submit" value="提交" class="layui-btn" id="change_submit" th:onclick="|javascript:changeSubmit()|">
+            <input type="button" value="清空" class="layui-btn layui-btn-primary" th:onclick="|javascript:changeClear()|">
+        </div>
+    </form>
+</div>
+<script th:src="@{../../static/layui/layui.js}"></script>
+<script th:src="@{../../static/layui/js/memp.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+spring:
+  resources:
+    static-locations: classpath:/static/
+  mvc:
+    static-path-pattern: /static/**
+    # 数据库
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cms?useUnicode=true&charaterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: (ZrF666)
+    # SpringSecurity
+  security:
+    user:
+      name: root
+      password: 123456
+# Mybatis
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+# 日志
+logging:
+  level:
+    com:
+      itzhang: debug
+

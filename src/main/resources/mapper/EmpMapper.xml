@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itzhang.mapper.EmpMapper">
+    <insert id="insertEmp" useGeneratedKeys="true" keyProperty="id">
+        insert into emp values(null, #{username}, #{password}, #{realName}, #{role}, #{state}, #{img}, now())
+    </insert>
+    <update id="updateEmp">
+        update emp
+        <set>
+            username=#{username}, password=#{password}, real_name=#{realName},
+            role = #{role}, state=#{state}, img = #{img}
+        </set>
+        where id = #{id}
+    </update>
+    <delete id="deleteEmp">
+        delete from emp where id = #{id}
+    </delete>
+
+    <select id="getAllEmp" resultType="com.itzhang.bean.Emp">
+        select id, username, password, real_name realName, role, state, img , create_time createTime from emp;
+    </select>
+    <select id="searchEmps" resultType="com.itzhang.bean.Emp">
+        select id, username, password, real_name realName, role, state, img, create_time createTime
+        from emp
+        <where>
+            <if test="username != ''">
+                username = #{username} and
+            </if>
+            <if test="realName != ''">
+                real_name = #{realName} and
+            </if>
+            <if test="role != ''">
+                role = #{role} and
+            </if>
+            <if test="state != ''">
+                state = #{state}
+            </if>
+        </where>;
+    </select>
+</mapper>
