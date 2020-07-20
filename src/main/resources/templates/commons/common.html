@@ -12,31 +12,28 @@
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="javascript:;">系统管理</a>
+                <a href="javascript:">系统管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="http://localhost:8080/views/changePassPage">修改密码</a></dd>
                     <dd><a href="http://localhost:8080/views/changeInfoPage">修改信息</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
-                <a href="#">统计分析</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="#">拜别</a></dd>
-                </dl>
+                <a href="http://localhost:8080/views/chart">统计分析</a>
             </li>
         </ul>
     </div>
 </div>
 <div class="layui-header" th:fragment="topBar" >
-    <div class="layui-logo">张先森的练手后台</div>
+    <div class="layui-logo" style="font-size: 20px; font-weight: bold">itZhang</div>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
-            <a href="javascript:;">
+            <a href="http://localhost:8080/views/changeInfoPage">
                 <span style="padding: 10px">[[${session.user.username}]]</span>
                 <img th:src="${session.user.img}" class="layui-nav-img"/>
             </a>
         </li>
-        <li class="layui-nav-item"><a href="/logout">退了</a></li>
+        <li class="layui-nav-item"><a href="/logout">点这里退出</a></li>
     </ul>
 </div>
 </html>

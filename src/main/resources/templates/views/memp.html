@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>员工管理</title>
     <link rel="stylesheet" th:href="@{../../static/layui/css/layui.css}">
-    <link rel="stylesheet" th:href="@{../../static/layui/css/memp.css}">
+    <link rel="stylesheet" th:href="@{../../static/my/css/memp.css}">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin" id="memp">
@@ -82,7 +82,7 @@
             </table>
         </div>
     </div>
-    <form id="myLayer">
+    <form id="myLayer" method="post" action="/views/changeEmp">
         <div th:onclick="|javascript:changeClose()|" class="closeBtn" >
             <i class="layui-icon">&#x1006;</i>
         </div>
@@ -118,13 +118,13 @@
             </select>
         </label>
         <div id="btn">
-            <input type="submit" value="提交" class="layui-btn" id="change_submit" th:onclick="|javascript:changeSubmit()|">
+            <input type="submit" value="提交" class="layui-btn" id="change_submit">
             <input type="button" value="清空" class="layui-btn layui-btn-primary" th:onclick="|javascript:changeClear()|">
         </div>
     </form>
 </div>
 <script th:src="@{../../static/layui/layui.js}"></script>
-<script th:src="@{../../static/layui/js/memp.js}"></script>
+<script th:src="@{../../static/my/js/memp.js}"></script>
 
 </body>
 </html>

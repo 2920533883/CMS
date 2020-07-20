@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>员工管理</title>
+    <link rel="stylesheet" th:href="@{../../static/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{../../static/my/css/chart.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin" id="memp">
+    <div th:replace="~{commons/common::topBar}"></div>
+    <div th:insert="~{commons/common::sideBar}"></div>
+    <div class="layui-body">
+        <form>
+            <input type="hidden" id="man" th:value="${sex[0]}">
+            <input type="hidden" id="woman" th:value="${sex[1]}">
+        </form>
+        <div id="sex">
+
+        </div>
+    </div>
+</div>
+<script th:src="@{../../static/layui/layui.js}"></script>
+<script th:src="@{../../static/my/js/chart.js}"></script>
+<script th:src="@{../../static/echarts/dist/echarts.min.js}"></script>
+<script>
+    let man = document.getElementById("man").value;
+    let woman = document.getElementById("woman").value;
+
+    // 基于准备好的dom，初始化echarts实例
+    const myChart = echarts.init(document.getElementById('sex'));
+    // 指定图表的配置项和数据
+    let option = {
+        title: {
+            x: "center",
+            y: "center",
+            text: "客户性别比例",
+            textStyle: {
+                color: "white"
+            }
+        },
+        series: [
+            {
+                type: 'pie',    // 设置图表类型为饼图
+                radius: '55%',  // 饼图的半径，外半径为可视区尺寸（容器高宽中较小一项）的 55% 长度。
+                data: [          // 数据数组，name 为数据项名称，value 为数据项值
+                    {value: man, name: '男'},
+                    {value: woman, name: '女'},
+                ]
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

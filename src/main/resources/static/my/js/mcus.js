@@ -10,7 +10,7 @@ let show_company = document.querySelectorAll("#show_company");
 let show_phone = document.querySelectorAll("#show_phone");
 let show_salary = document.querySelectorAll("#show_salary");
 let show_position = document.querySelectorAll("#show_position");
-let show_empId = document.querySelectorAll("#show_empId");
+let show_empName = document.querySelectorAll("#show_empName");
 function searchClear() {
     search_name.value = "";
     search_company.value = "";
@@ -24,7 +24,7 @@ function changeItem(id, index) {
     document.getElementById("change_salary").value = show_salary[index].innerHTML;
     document.getElementById("change_position").value = show_position[index].innerHTML;
     document.getElementById("change_phone").value = show_phone[index].innerHTML;
-    document.getElementById("change_empId").value = show_empId[index].innerHTML;
+    document.getElementById("change_empName").value = show_empName[index].innerHTML;
 }
 function changeClear() {
     change_username.value = "";

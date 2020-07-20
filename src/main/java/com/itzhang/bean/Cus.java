@@ -15,6 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Cus {
     int id;
-    String name, company, position, salary, phone, createTime;
-    int sex, state, empId;
+    String name, company, position, salary, phone, createTime,empName;
+    int sex, state;
 }

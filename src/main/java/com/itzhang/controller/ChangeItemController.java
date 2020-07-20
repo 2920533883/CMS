@@ -4,6 +4,8 @@ import com.itzhang.bean.Emp;
 import com.itzhang.service.ChangeItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +36,7 @@ public class ChangeItemController {
     }
 
     @PostMapping("/changePass")
+    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 1)
     public String changePass(String username, String newPass, String oldPass, Model model){
         String pass = changeItemService.checkPassword(username);
         if (Objects.equals(pass, oldPass)){
@@ -47,8 +50,8 @@ public class ChangeItemController {
         }
     }
     @RequestMapping("/changeInfo")
+    @Transactional(isolation = Isolation.READ_COMMITTED, timeout = 1)
     public String changeInfo(String username, String realName, String img, int id, HttpSession session){
-        System.out.println(id);
         changeItemService.updateInfo(username, realName, img, id);
         Emp userInfo = changeItemService.getUserInfo(id);
         session.setAttribute("user", userInfo);
