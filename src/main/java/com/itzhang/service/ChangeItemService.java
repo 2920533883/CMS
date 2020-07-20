@@ -1,7 +1,6 @@
 package com.itzhang.service;
 
-import org.apache.ibatis.annotations.Param;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.itzhang.bean.Emp;
 
 /**
  * @program: CMS
@@ -12,5 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public interface ChangeItemService {
     public String checkPassword(String username);
-    public int changePassword(String username, String newPass);
+    public void changePassword(String username, String newPass);
+    public void updateInfo(String username, String realName, String img, int id);
+    public Emp getUserInfo(int id);
 }

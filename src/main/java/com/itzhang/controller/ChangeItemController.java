@@ -1,11 +1,14 @@
 package com.itzhang.controller;
 
+import com.itzhang.bean.Emp;
 import com.itzhang.service.ChangeItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 /**
@@ -18,16 +21,23 @@ import java.util.Objects;
 @RequestMapping("/views")
 public class ChangeItemController {
     @Autowired
-    ChangeItemService changePassService;
+    ChangeItemService changeItemService;
+
     @RequestMapping("/changePassPage")
     public String changPassController(){
         return "views/changePass";
     }
+
+    @RequestMapping("/changeInfoPage")
+    public String changeInfoController(Model model, HttpSession session){
+        return "views/changeInfo";
+    }
+
     @PostMapping("/changePass")
     public String changePass(String username, String newPass, String oldPass, Model model){
-        String pass = changePassService.checkPassword(username);
+        String pass = changeItemService.checkPassword(username);
         if (Objects.equals(pass, oldPass)){
-            changePassService.changePassword(username, newPass);
+            changeItemService.changePassword(username, newPass);
             model.addAttribute("msg", "修改完成,请重新登陆");
             return "login";
         }
@@ -35,6 +45,14 @@ public class ChangeItemController {
             model.addAttribute("msg", "修改错误，请检查输入");
             return "views/changePass";
         }
+    }
+    @RequestMapping("/changeInfo")
+    public String changeInfo(String username, String realName, String img, int id, HttpSession session){
+        System.out.println(id);
+        changeItemService.updateInfo(username, realName, img, id);
+        Emp userInfo = changeItemService.getUserInfo(id);
+        session.setAttribute("user", userInfo);
+        return "redirect:/views/changeInfoPage";
     }
 
 }

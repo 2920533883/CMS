@@ -1,5 +1,6 @@
 package com.itzhang.service.Impl;
 
+import com.itzhang.bean.Emp;
 import com.itzhang.mapper.ChangeItemMapper;
 import com.itzhang.service.ChangeItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,19 @@ public class ChangeItemItemServiceImpl implements ChangeItemService {
     }
 
     @Override
-    public int changePassword(String username, String newPass) {
-        return changePassMapper.changePassword(username, newPass);
+    public void changePassword(String username, String newPass) {
+        changePassMapper.changePassword(username, newPass);
     }
+
+    @Override
+    public void updateInfo(String username, String realName, String img, int id) {
+        changePassMapper.updateInfo(username, realName, img, id);
+    }
+
+    @Override
+    public Emp getUserInfo(int id) {
+        return changePassMapper.getUserInfo(id);
+    }
+
+
 }

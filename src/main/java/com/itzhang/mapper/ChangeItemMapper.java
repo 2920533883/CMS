@@ -13,4 +13,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ChangeItemMapper {
     public String checkPassword(String username);
     public int changePassword(@Param("username") String username, @Param("newPass") String newPass);
+    public void updateInfo(@Param("username") String username, @Param("realName") String realName, @Param("img") String img, @Param("id") int id);
+    public Emp getUserInfo(int id);
 }

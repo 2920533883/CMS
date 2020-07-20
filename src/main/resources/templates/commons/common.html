@@ -15,7 +15,7 @@
                 <a href="javascript:;">系统管理</a>
                 <dl class="layui-nav-child">
                     <dd><a href="http://localhost:8080/views/changePassPage">修改密码</a></dd>
-                    <dd><a href="javascript:;">修改头像</a></dd>
+                    <dd><a href="http://localhost:8080/views/changeInfoPage">修改信息</a></dd>
                 </dl>
             </li>
             <li class="layui-nav-item">
@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="layui-header" th:fragment="topBar" >
-    <div class="layui-logo">layui 后台布局</div>
+    <div class="layui-logo">张先森的练手后台</div>
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:;">
@@ -36,7 +36,7 @@
                 <img th:src="${session.user.img}" class="layui-nav-img"/>
             </a>
         </li>
-        <li class="layui-nav-item"><a th:href="@{/logout}">退了</a></li>
+        <li class="layui-nav-item"><a href="/logout">退了</a></li>
     </ul>
 </div>
 </html>

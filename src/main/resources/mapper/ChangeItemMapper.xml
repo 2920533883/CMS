@@ -4,8 +4,16 @@
     <update id="changePassword">
         update emp set password = #{newPass} where username = #{username};
     </update>
+    <update id="updateInfo">
+        update emp set username = #{username}, img = #{img}, real_name = #{realName} where id = #{id};
+    </update>
 
     <select id="checkPassword" resultType="java.lang.String">
         select password from emp where username=#{username};
     </select>
+    <select id="getUserInfo" resultType="com.itzhang.bean.Emp">
+        select id, username, password, real_name realName, role, state, img , create_time createTime from emp where id = #{id};
+    </select>
+
+
 </mapper>

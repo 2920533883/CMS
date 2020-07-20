@@ -25,7 +25,6 @@ public class LoginController {
     LoginService loginService;
     @RequestMapping("/")
     public String toLogin(){
-
         return "login";
     }
     @PostMapping("/login")
