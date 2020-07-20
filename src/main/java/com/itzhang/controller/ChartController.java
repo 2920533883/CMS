@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 @Controller
 @RequestMapping("/views")
-public class chartController {
+public class ChartController {
 
     @Autowired
     ChartService chartService;
