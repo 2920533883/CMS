@@ -29,7 +29,6 @@ public class LoginController {
     }
     @PostMapping("/login")
     public String loginCheck(String username, String password, HttpSession session, Model model){
-        System.out.println(username + password);
         Emp user = loginService.loginCheck(username);
         if (user.getPassword().equals(password)){
             session.setAttribute("user", user);

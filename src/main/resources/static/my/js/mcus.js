@@ -36,7 +36,7 @@ function changeClose() {
 }
 
 function delItem(id) {
-    window.location.href="http://localhost:8080/views/deleteCus?id="+id;
+    window.location.href="http://"+document.domain+":8080/views/deleteCus?id="+id;
 }
 
 function insertItem() {
