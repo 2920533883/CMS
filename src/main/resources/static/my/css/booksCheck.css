@@ -1,0 +1,31 @@
+h1{font-size: 16px;}
+table{        /* 色彩恬淡的细表格是设计的主流 */
+    width: 100%;
+    font-size: 12px;
+    margin: 20px auto;
+    border: 1px solid #cad9ea;
+    color: #666;
+    border-collapse: collapse;/* 让表格看起来更精致 */
+}
+th{
+    background-color: #eee;
+    height: 30px;
+    overflow: hidden;
+}
+td{
+    height: 50px;
+    overflow: hidden;
+    font-size: 16px;
+    text-align: center;
+}
+td button{
+    width: 60px;
+    height: 40px;
+}
+td,th{
+    border: 1px solid #cad9ea;
+}
+/* 本案例的关键，通过结构伪类选择器为偶数行定义背景色 */
+tr:nth-child(even){
+    background-color: #f5fafe;
+}

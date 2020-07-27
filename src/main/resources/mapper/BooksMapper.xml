@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itzhang.mapper.BooksMapper">
+    <update id="successCheck">
+        update books set status = 1 where id = #{id}
+    </update>
+    <delete id="failCheck">
+        delete from books where id = #{id}
+    </delete>
+    <select id="getAllSellableBooks" resultType="com.itzhang.pojo.Books">
+        select id, name, price, content, picture, user, status, tag from books where status = 1;
+    </select>
+
+
+    <select id="getAllCheckedBooks" resultType="com.itzhang.pojo.Books">
+        select id, name, price, content, picture, user, status, tag from books where status = 0;
+    </select>
+</mapper>

@@ -28,7 +28,6 @@
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:2.3.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.3.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.3.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-logging:2.3.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-classic:1.2.3" level="project" />
     <orderEntry type="library" name="Maven: ch.qos.logback:logback-core:1.2.3" level="project" />
@@ -104,11 +103,11 @@
     <orderEntry type="library" name="Maven: org.webjars.npm:vue__shared:3.0.0-alpha.13" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:vue__compiler-dom:3.0.0-alpha.13" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:vue__compiler-core:3.0.0-alpha.13" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.npm:babel__types:7.10.4" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.npm:babel__types:7.10.5" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:babel__helper-validator-identifier:7.10.4" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:lodash:4.17.19" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:to-fast-properties:2.0.0" level="project" />
-    <orderEntry type="library" name="Maven: org.webjars.npm:babel__parser:7.10.4" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars.npm:babel__parser:7.10.5" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:source-map:0.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:estree-walker:0.8.1" level="project" />
     <orderEntry type="library" name="Maven: org.webjars.npm:vue__runtime-dom:3.0.0-alpha.13" level="project" />
@@ -121,6 +120,9 @@
     <orderEntry type="library" name="Maven: org.webjars.npm:ms:2.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.30" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring-boot-web-starter:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring-boot-starter:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-core:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-lang:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-cache:1.5.3" level="project" />
@@ -132,5 +134,9 @@
     <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.9.4" level="project" />
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-event:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.owasp.encoder:encoder:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.3.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.72" level="project" />
   </component>
 </module>

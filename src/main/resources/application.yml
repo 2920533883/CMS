@@ -5,9 +5,9 @@ spring:
     static-path-pattern: /static/**
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/cms?useUnicode=true&charaterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://106.12.160.148:3306/houjie?useUnicode=true&charaterEncoding=UTF-8&serverTimezone=UTC
     username: root
-    password: (ZrF666)
+    password: root
 # mybatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml

@@ -1,40 +1,70 @@
 package com.itzhang.controller;
 
-import com.itzhang.bean.Emp;
+
+import com.itzhang.pojo.Manager;
 import com.itzhang.service.LoginService;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
-/**
- * @program: CMS
- * @description: 其他控制
- * @author: zhang rui feng
- * @create: 2020-07-18 22:40
- */
 @Controller
 public class LoginController {
+
     @Autowired
     LoginService loginService;
-    @RequestMapping("/")
-    public String toLogin(){
-        return "login";
+
+    @RequestMapping({"/", "/login"})
+    public String toLoginPage(){
+        return "/login";
     }
-    @PostMapping("/login")
-    public String loginCheck(String username, String password, HttpSession session, Model model){
-        Emp user = loginService.loginCheck(username);
-        if (user.getPassword().equals(password)){
-            session.setAttribute("user", user);
-            return "redirect:/views/memp";
+
+    @RequestMapping("/register")
+    public String toRegisterPage(){
+        return "/register";
+    }
+
+    @PostMapping("/doRegister")
+    public String doRegister(String name, String password, String phone, String authentication, Model model){
+        if ("houjie".equals(authentication)) {
+            loginService.doRegister(new Manager(null, name, phone, password, phone));
+            model.addAttribute("msg", "注册成功");
+            return "/login";
         }
-        model.addAttribute("msg","用户名密码不匹配");
-        return "login";
+        else {
+            model.addAttribute("msg", "注册失败");
+            return "/register";
+        }
+    }
+    @PostMapping("/doLogin")
+    public String doLogin(String phone, String password, Model model){
+        try{
+            System.out.println(phone + password);
+            loginService.doLogin(phone, password);
+            model.addAttribute("msg", "登陆成功");
+            return "redirect:/manager";
+        } catch (UnknownAccountException e){
+            model.addAttribute("msg", "手机号错误");
+            return "login";
+        } catch (IncorrectCredentialsException e){
+            model.addAttribute("msg", "密码错误");
+            return "login";
+        }
+    }
+
+
+    @RequestMapping("doLogout")
+    public String doLogout(){
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "redirect:/login";
     }
 }

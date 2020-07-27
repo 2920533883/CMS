@@ -1,0 +1,33 @@
+#addTag{
+    height: 50px;
+    line-height: 50px;
+}
+.layui-tab-title li{
+    width: 100px;
+}
+#font_icon{
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+#show{
+    height: 500px;
+}
+#show li{
+    margin-top: 10px;
+    display: inline-block;
+    height: 60px;
+    width: 300px;
+    border: 1px solid #4E5465;
+}
+#show span{
+    margin-left: 20px;
+    line-height: 60px;
+}
+#show button{
+    width: 85px;
+    height: 35px;
+    margin-top: 12px;
+    float: right;
+    margin-right: 30px;
+}

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itzhang.mapper.ManagerMapper">
+    <insert id="addManager" keyProperty="id" useGeneratedKeys="true">
+        insert into manager value (#{id}, #{name}, #{phone}, #{password}, #{salt})
+    </insert>
+
+    <select id="getAllManager" resultType="com.itzhang.pojo.Manager">
+       select id, name, phone, password, salt from manager
+   </select>
+    <select id="getManagerByName" resultType="com.itzhang.pojo.Manager">
+        select id, name, phone, password, salt from manager where name = #{name}
+    </select>
+    <select id="getManagerByPhone" resultType="com.itzhang.pojo.Manager">
+        select id, name, phone, password, salt from manager where phone = #{phone}
+    </select>
+</mapper>

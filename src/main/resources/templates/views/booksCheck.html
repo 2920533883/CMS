@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>商品列表</title>
+    <link rel="stylesheet" th:href="@{../../static/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{../../static/my/css/booksCheck.css}">
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="~{commons/common::topBar}"></div>
+    <div th:insert="~{commons/common::sideBar}"></div>
+    <div class="layui-body">
+        <div>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>商品名称</th>
+                    <th>价格</th>
+                    <th>卖家</th>
+                    <th>分类</th>
+                    <th>详情、实图</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:each="books: ${checkedBooks}">
+                    <td th:text="${books.id}"></td>
+                    <td th:text="${books.name}"></td>
+                    <td th:text="${books.price}"></td>
+                    <td th:text="${books.user}"></td>
+                    <td th:text="${books.tag}"></td>
+                    <td>
+                        <button th:onclick="showDetail([[${books.picture}]], [[${books.content}]])">详情</button>
+                    </td>
+                    <td>
+                        <div><a th:href="@{/books/successCheck(id=${books.id})}"><button class="layui-btn">通过</button></a></div>
+                        <div><a th:href="@{/books/failCheck(id=${books.id})}"><button class="layui-btn layui-btn-danger">删除</button></a></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<script th:src="@{../../static/layui/layui.js}"></script>
+<script th:src="@{../../static/my/js/booksCheck.js}"></script>
+</body>
+</html>
