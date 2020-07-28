@@ -1,8 +1,9 @@
 package com.itzhang.pojo;
-
 import lombok.*;
-import org.springframework.stereotype.Service;
 
+/**
+ * 针对Lay-ui数据表格的Json数据返回
+ */
 @Getter
 @Setter
 @AllArgsConstructor

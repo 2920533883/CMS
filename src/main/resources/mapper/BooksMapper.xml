@@ -10,11 +10,11 @@
         delete from books where id = #{id}
     </delete>
     <select id="getAllSellableBooks" resultType="com.itzhang.pojo.Books">
-        select id, name, price, content, picture, user, status, tag from books where status = 1;
+        SELECT b.id id, b.name name, b.price price, b.content content, b.picture picture, u.name user, b.status status, t.name tag FROM books b
+        left join user u on b.user_id = u.id left join tag t on b.tag_id = t.id where b.status = 1;
     </select>
-
-
     <select id="getAllCheckedBooks" resultType="com.itzhang.pojo.Books">
-        select id, name, price, content, picture, user, status, tag from books where status = 0;
+        SELECT b.id id, b.name name, b.price price, b.content content, b.picture picture, u.name user, b.status status, t.name tag FROM books b
+        left join user u on b.user_id = u.id left join tag t on b.tag_id = t.id where b.status = 0;
     </select>
 </mapper>
