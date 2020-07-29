@@ -72,7 +72,6 @@ public class LoginController {
     @PostMapping("/doLogin")
     public String doLogin(String phone, String password, Model model){
         try{
-            System.out.println(phone + password);
             loginService.doLogin(phone, password);
             model.addAttribute("msg", "登陆成功");
             return "redirect:/manager";

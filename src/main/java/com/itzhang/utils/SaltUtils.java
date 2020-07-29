@@ -2,6 +2,9 @@ package com.itzhang.utils;
 
 import java.util.Random;
 
+/**
+ * 自定义盐工具类
+ */
 public class SaltUtils {
     public static String getSalt(int length){
         StringBuilder salt = new StringBuilder();

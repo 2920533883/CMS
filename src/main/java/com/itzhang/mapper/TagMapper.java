@@ -1,10 +1,11 @@
 package com.itzhang.mapper;
 
 import com.itzhang.pojo.Tag;
-import org.apache.ibatis.annotations.Mapper;
-
 import java.util.List;
-@Mapper
+
+/**
+ * 分类Mapper
+ */
 public interface TagMapper {
     List<Tag> getAllParentTag();
     List<Tag> getChildTagByParent(Integer parent_id);

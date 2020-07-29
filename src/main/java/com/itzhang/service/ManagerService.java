@@ -1,13 +1,13 @@
 package com.itzhang.service;
 
+import com.itzhang.pojo.JsonRes;
 import com.itzhang.pojo.Manager;
 
-import java.util.List;
-
+/**
+ * 管理员服务接口
+ */
 public interface ManagerService {
-    List<Manager> getAllManager();
-    // 用于查询
-    List<Manager> getManagerByName(String name);
+    JsonRes getAllManager();
     // 用于登录
     Manager getManagerByPhone(String phone);
 }
