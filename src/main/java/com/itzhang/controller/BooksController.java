@@ -52,7 +52,7 @@ public class BooksController {
 
     /**
      * 前台点击通过按钮，获取点击商品id，调用该方法，将商品status状态属性改为1即通过审核，并跳转到审查页
-     * @param id
+     * @param id 点击商品id
      * @return 审查页路径
      */
     @RequestMapping("/books/successCheck")
@@ -63,7 +63,7 @@ public class BooksController {
 
     /**
      * 前台点击通过按钮，获取点击商品id，调用该方法，删除商品，并跳转到审查页
-     * @param id
+     * @param id 点击商品id
      * @return 审查页路径
      */
     @RequestMapping("/books/failCheck")
