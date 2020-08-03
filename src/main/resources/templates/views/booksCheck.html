@@ -23,18 +23,18 @@
                     <th>详情、实图</th>
                     <th>操作</th>
                 </tr>
-                <tr th:each="books: ${checkedBooks}">
-                    <td th:text="${books.id}"></td>
+                <tr th:each="books, status: ${checkedBooks}">
+                    <td th:text="${status.index}"></td>
                     <td th:text="${books.name}"></td>
                     <td th:text="${books.price}"></td>
                     <td th:text="${books.user}"></td>
                     <td th:text="${books.tag}"></td>
                     <td>
-                        <button th:onclick="showDetail([[${books.picture}]], [[${books.content}]])">详情</button>
+                        <button class="layui-btn layui-btn-warm" th:onclick="showDetail([[${books.picture}]], [[${books.content}]])">详情</button>
                     </td>
                     <td>
-                        <div><a th:href="@{/books/successCheck(id=${books.id})}"><button class="layui-btn">通过</button></a></div>
-                        <div><a th:href="@{/books/failCheck(id=${books.id})}"><button class="layui-btn layui-btn-danger">删除</button></a></div>
+                        <div><a th:href="@{/books/successCheck(id=${books.id})}"><button class="layui-btn layui-btn-sm">通过</button></a></div>
+                        <div><a th:href="@{/books/failCheck(id=${books.id})}"><button class="layui-btn layui-btn-danger layui-btn-sm">删除</button></a></div>
                     </td>
                 </tr>
             </table>

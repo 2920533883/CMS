@@ -30,7 +30,7 @@ public class TagController {
         model.addAttribute("ParentTags", allParentTag);
         List<Tag> childTag = tagService.getChildTagByParent(parent_id);
         model.addAttribute("ChildTags", childTag);
-        return "/views/tagInfo";
+        return "views/tagInfo";
     }
 
     /**
@@ -40,7 +40,7 @@ public class TagController {
      * @param parent_id 父分类id
      * @return 重定向访问 redirect:/tag?parent_id 资源
      */
-    @RequestMapping("/deleteTag")
+    @RequestMapping("/tag/deleteTag")
     public String deleteTag(Integer id, Integer parent_id){
         tagService.deleteTagById(id);
         return "redirect:/tag?parent_id="+parent_id;
@@ -53,7 +53,7 @@ public class TagController {
      * @param name 分类名称
      * @return 重定向访问 redirect:/tag?parent_id=
      */
-    @PostMapping("/insertTag")
+    @PostMapping("/tag/insertTag")
     public String insertTag(Integer parent_id, String name){
         tagService.insertTag(new Tag(null, name, parent_id));
         return "redirect:/tag?parent_id="+parent_id;

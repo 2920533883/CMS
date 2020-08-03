@@ -27,7 +27,7 @@ public class ManagerController {
      */
     @RequestMapping("/manager")
     public String goManagerPage(){
-        return "/views/managerInfo";
+        return "views/managerInfo";
     }
 
     /**

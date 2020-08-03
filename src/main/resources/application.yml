@@ -8,6 +8,9 @@ spring:
     url: jdbc:mysql://106.12.160.148:3306/houjie?useUnicode=true&charaterEncoding=UTF-8&serverTimezone=UTC
     username: root
     password: root
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
 # mybatis
 mybatis:
   mapper-locations: classpath:mapper/*.xml

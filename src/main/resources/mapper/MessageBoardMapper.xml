@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.itzhang.mapper.MessageBoardMapper">
+    <delete id="deleteMessageById">
+        delete from messageboard where id = #{id}
+    </delete>
+
+    <select id="getAllMessage" resultType="com.itzhang.pojo.Message">
+        select m.id id, u.name name,m.content content, m.create_time create_time
+        from messageboard m left join user u on m.user_id = u.id;
+    </select>
+</mapper>

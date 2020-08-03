@@ -28,7 +28,7 @@ public class LoginController {
      */
     @RequestMapping({"/", "/login"})
     public String toLoginPage(){
-        return "/login";
+        return "login";
     }
 
     /**
@@ -37,7 +37,7 @@ public class LoginController {
      */
     @RequestMapping("/register")
     public String toRegisterPage(){
-        return "/register";
+        return "register";
     }
 
     /**
@@ -54,11 +54,11 @@ public class LoginController {
         if ("houjie".equals(authentication)) {
             loginService.doRegister(new Manager(null, name, phone, password, phone));
             model.addAttribute("msg", "注册成功");
-            return "/login";
+            return "login";
         }
         else {
             model.addAttribute("msg", "注册失败");
-            return "/register";
+            return "register";
         }
     }
 

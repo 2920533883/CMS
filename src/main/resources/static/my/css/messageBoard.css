@@ -1,0 +1,43 @@
+#showMessage{
+    height: 95%;
+}
+#showMessage ul{
+    width: 95%;
+    list-style:none;
+    margin: 30px auto;
+    border: 1px solid black;
+    background-color: #fbfbfb;
+}
+#showMessage::-webkit-scrollbar {
+    display: none;
+}
+#title{
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 1px solid black;
+}
+#name{
+    margin-left: 20px;
+    font-size: 20px;
+}
+#time{
+    margin-left: 100px;
+}
+#message{
+    height: 100px;
+}
+#btn{
+    float: right;
+    margin-right: 30px;
+}
+#content{
+    margin-top: 5px;
+    height: 100px;
+
+}
+#changePage{
+    position: absolute;
+    width: 500px;
+    right: 0;
+    bottom: 0;
+}

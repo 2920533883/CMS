@@ -22,9 +22,9 @@ public class BooksController {
      * 通过访问  /sellableBooks  跳转到可卖商品页
      * @return 商品页路径
      */
-    @RequestMapping("/sellableBooks")
+    @RequestMapping("/books/sellableBooks")
     public String toSellableBooksPage(){
-        return "/views/booksInfo";
+        return "views/booksInfo";
     }
 
     /**
@@ -32,11 +32,11 @@ public class BooksController {
      * @param model
      * @return 审查页路径
      */
-    @RequestMapping("/checkedBooks")
+    @RequestMapping("/books/checkedBooks")
     public String toCheckedBooksPage(Model model){
         List<Books> allCheckedBooks = booksService.getAllCheckedBooks();
         model.addAttribute("checkedBooks", allCheckedBooks);
-        return "/views/booksCheck";
+        return "views/booksCheck";
     }
 
     /**
@@ -58,7 +58,7 @@ public class BooksController {
     @RequestMapping("/books/successCheck")
     public String successCheck(Integer id){
         booksService.successCheck(id);
-        return "/views/booksCheck";
+        return "views/booksCheck";
     }
 
     /**
@@ -69,6 +69,6 @@ public class BooksController {
     @RequestMapping("/books/failCheck")
     public String failCheck(Integer id){
         booksService.failCheck(id);
-        return "/views/booksCheck";
+        return "views/booksCheck";
     }
 }

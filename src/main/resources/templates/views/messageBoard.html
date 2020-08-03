@@ -1,10 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>留言板</title>
+    <link rel="stylesheet" th:href="@{../../static/layui/css/layui.css}">
+    <link rel="stylesheet" th:href="@{../../static/my/css/messageBoard.css}">
 </head>
-<body>
-
+<body class="layui-layout-body" >
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="~{commons/common::topBar}"></div>
+    <div th:insert="~{commons/common::sideBar}"></div>
+    <div class="layui-body" id="showMessage">
+        <ul th:each="msg: ${messages}">
+            <li>
+                <div id="title">
+                    <div>
+                        <span id="name" th:text="${msg.name}"></span>
+                        <span id="time" th:text="${msg.create_time}"></span>
+                        <div id="btn">
+                            <a th:href="@{/messageBoard/confirmMessage(id = ${msg.id})}">
+                                <button class="layui-btn layui-btn-danger layui-btn-radius layui-btn-xs">
+                                    <i class="layui-icon">&#xe605;</i>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="content" th:text="${msg.content}">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script th:src="@{../../static/layui/layui.js}"></script>
+<script th:src="@{../../static/my/js/messageBoard.js}"></script>
 </body>
 </html>

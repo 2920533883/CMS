@@ -30,6 +30,7 @@ public class ShiroConfig{
         map.put("/manager/**", "authc");
         map.put("/books/**", "authc");
         map.put("/tag/**", "authc");
+        map.put("/messageBoard/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
         // 设置登录页
         shiroFilterFactoryBean.setLoginUrl("/login");
